@@ -17,7 +17,7 @@ int suma_armonica(int ini,int fin)
   double div=0.0;
   for(int i=ini;i<=fin;i++);
   {
-    div=1.0;
+    div=1.0/i;
     suma+=div;
     printf("%d %6.5f",i,suma);
   }
