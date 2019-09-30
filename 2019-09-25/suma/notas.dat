@@ -1,0 +1,19 @@
+CXXFLAGS=-O2 -Wall
+
+all: sum1.o sum2.o sum3.o main-sumas.x
+
+sum1.o: sum1.cpp
+	g++ -c $< -o $@
+
+sum2.o: sum2.cpp
+	g++ -c $< -o $@
+
+sum3.o: sum3.cpp
+	g++ -c $< -o $@
+
+main-sumas.x: main-sumas.cpp sum1.o  sum2.o sum3.o
+	g++ $^ -o $@
+
+.PHONY: clean
+clean:
+	rm -f a.out *.o *~ *.x
