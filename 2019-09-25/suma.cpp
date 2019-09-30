@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cmath>
 
+
 typedef double  REAL; // crear un sinonimo: REAL es lo que esta a su izquierda
 
 REAL sum1(int N);
