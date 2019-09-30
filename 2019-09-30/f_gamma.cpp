@@ -6,8 +6,8 @@
 int main()
 {
   const double xini=0.0;
-  const double xfin=10.0;
-  const double dx=0.1;
+  const double xfin=8.0;
+  const double dx=0.0001;
   const double pasos=(xfin-xini)/dx;
   
   
@@ -17,8 +17,8 @@ int main()
     {
       x+=dx;
       printf("%10.5f %10.5f \n",x,std::tgamma(x));
-     
-    }
 
+      
+    }
   return 0;
 }
