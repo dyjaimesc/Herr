@@ -11,11 +11,10 @@ int main(void)
 
  const double xmin=0.0;
  const double xmax=1.0;
- const double dx=0.05;
+ const double dx=0.005;
  const int nbins=(xmax-xmin)/dx;
  
  std::vector<double> histo(nbins);
-
 
   // std::random_device rd;//simulacion de algo que es aleatorio que e suna semilla.
   std::mt19937 gen(semilla);
@@ -28,13 +27,10 @@ int main(void)
 	histo[irdx]+=1;
       }
   
-
   for(int i=0;i<=nbins;i++)
     {
-      printf("%10.3f %10.4f\n",xmin+i*dx,histo[i]/(pasos*dx));
+      printf("%10.3f %10.5f\n",xmin+i*dx,histo[i]/(pasos*dx));
      }
-  
-    
 
-  return 0;
+   return 0;
 }
