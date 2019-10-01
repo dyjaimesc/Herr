@@ -1,11 +1,11 @@
-all: f_gamma.x datos.txt fig.pdf
+all: f_gamma.x f_bessel.x f_gamma.txt f_bessel.pdf f_gamma.pdf f_bessel.pdf
 
-f_gamma.x: f_gamma.cpp
-	g++ -std=c++11 $< -o $@
+%.x: %.cpp
+	g++ -std=c++17 $< -o $@
 
-datos.txt: f_gamma.x
+%.txt: %.x
 	./$< > $@
 
-fig.pdf: plot.gp datos.txt
+%.pdf: %.gp %.txt
 	gnuplot $<
 
