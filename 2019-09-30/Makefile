@@ -9,3 +9,7 @@ all: f_gamma.x f_bessel.x f_gamma.txt f_bessel.pdf f_gamma.pdf f_bessel.pdf
 %.pdf: %.gp %.txt
 	gnuplot $<
 
+.PHONY: clean
+clean:
+	rm -f *.x  *~ a.out
+
