@@ -1,4 +1,4 @@
-all: f_gamma.x f_bessel.x f_gamma.txt f_bessel.pdf f_gamma.pdf f_bessel.pdf
+all: f_gamma.x f_bessel.x random.cpp f_gamma.txt f_bessel.txt random.txt f_gamma.pdf f_bessel.pdf random.pdf
 
 %.x: %.cpp
 	g++ -std=c++17 $< -o $@

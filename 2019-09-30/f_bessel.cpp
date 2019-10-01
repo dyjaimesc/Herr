@@ -16,7 +16,7 @@ int main()
   for(int i=0;i<pasos;i++)
     {
       x+=dx;
-      printf("%10.5f %10.5f \n",x,std::cyl_bessel_i(nu,x));
+      printf("%10.5f %10.5f \n",x,std::tgamma(x));      //printf("%10.5f %10.5f \n",x,std::cyl_bessel_i(nu,x));
 
       
     }
