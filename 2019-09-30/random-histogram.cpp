@@ -1,11 +1,12 @@
 #include<iostream>
 #include<random>
 #include<vector>
+#include<cstdio>
 
 int main(void)
 {
   
- const int pasos=30;
+ const int pasos=2000000;
  int semilla=1; //cuelquier numero positivo  Si la semilla es constante las serie generada no cambia
 
  const double xmin=0.0;
@@ -28,14 +29,10 @@ int main(void)
       }
   
 
-  for(int i=0;i<nbins;i++)
+  for(int i=0;i<=nbins;i++)
     {
-      for(int j=0;j<histo[i];j++)
-	{
-	  std::cout<<"*";
-	}
-      std::cout<<'\n';
-    }
+      printf("%10.3f %10.4f\n",xmin+i*dx,histo[i]/(pasos*dx));
+     }
   
     
 
