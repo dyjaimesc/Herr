@@ -11,5 +11,5 @@ all: f_gamma.x f_bessel.x random.cpp f_gamma.txt f_bessel.txt random.txt f_gamma
 
 .PHONY: clean
 clean:
-	rm -f *.x  *~ a.out
+	rm -f *.x  *~ a.out *#
 
