@@ -1,0 +1,7 @@
+All: OperadoresCpp.x OperadoresCpp
+
+%.x:%.cpp
+	g++ -std=c++11 $^ -o $@
+
+%:%.x
+	./$^
