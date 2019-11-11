@@ -2,10 +2,11 @@
 #include<cstdio>
 #include<cmath>
 
-const int N=3;
+const int N=4;
+
 double imprimir(double *M1);
 double multipli_mtx(double *M1,double *M2, double *P);
-double transpuesta(double *M1,double *M2);
+void transpuesta(double *M1,double *M2);
 
 int main()
 {
@@ -33,6 +34,10 @@ int main()
   imprimir(C);
   transpuesta(C,AT);
   imprimir(AT);
+  delete [] A;
+  delete [] B;
+  delete [] C;
+  delete [] AT;
   
   return 0;
 }
@@ -45,7 +50,7 @@ double imprimir( double *M1)
     {
         for(int j=0;j<N;j++)
 	  {
-	    printf("%5.3f ",M1[i*N+j]);
+	    printf("%10.3f ",M1[i*N+j]);
 	  }
 	printf("\n");
     }
@@ -91,17 +96,13 @@ double multipli_mtx(double *M1,double *M2, double *P)
   return 0;
 }
 
-double transpuesta(double *M1,double *M2)
+void transpuesta(double *M1,double *M2)
 {
     for(int i=0;i<N;i++)
     {
         for(int j=0;j<N;j++)
 	  {
 	    M2[i*N+j]=M1[j*N+i];
-	   
-		   
-	    
-	    
 	  }
-	  }
+    }
 }

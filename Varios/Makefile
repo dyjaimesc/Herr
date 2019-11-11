@@ -1,15 +1,14 @@
-all: f_gamma.x f_bessel.x random.x random-histogram.x normal-histogram.x random.cpp random-histogram.cpp normal-histogram.cpp f_gamma.txt f_bessel.txt random.txt random-histogram.txt normal-histogram.txt f_gamma.pdf f_bessel.pdf random.pdf random-histogram.pdf normal-histogram.pdf
+ALL:	compilar ejecutar
 
-%.x: %.cpp
-	g++ -std=c++17 $< -o $@
 
-%.txt: %.x
-	./$< > $@
+compilar: multi_Matrix.cpp
+	g++ -std=c++11 -Wall -g -fsanitize=address -fsanitize=leak -fsanitize=undefined $<
 
-%.pdf: %.gp %.txt
-	gnuplot $<
+ejecutar: a.out
+	./$<
+
+
 
 .PHONY: clean
 clean:
-	rm -f *.x  *~ a.out *# *.txt *.pdf
-
+	rm -f *.x  *~ a.out *#  *.pdf
