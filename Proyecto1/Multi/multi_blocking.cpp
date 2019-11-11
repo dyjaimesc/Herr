@@ -2,18 +2,18 @@
 #include<cstdio>
 #include<cmath>
 
-const int N=4;
+const int N=256;
 
 double imprimir(double *M1,int);
 double multipli_mtx(double *M1,double *M2, double *P);
 void mul_blocking(double *M1,double *M2, double *P,int);
-void multi_mtx(double *M1,double *M2, double *P);
+
 
 int main()
 {
   
 
-  double *A= new double [N*N], *B=new double[N*N],*C=new double[N*N], *AT=new double[N*N];
+  double *A= new double [N*N], *B=new double[N*N],*C=new double[N*N], *Pr=new double[N*N];
   int Np=N;
 
   //inicializo la matriz
@@ -25,19 +25,25 @@ int main()
 	    A[i*N+j]=i+j+1.0;
 	    //printf("%d %d %5.3f %f\n",i,j,A[i*N+j],i+j+1.0);
 	    B[i*N+j]=1.0*N*i+j;
+	    Pr[i*N+j]=0.0;
 	  }
     }
   
-  imprimir(A,N);
-  imprimir(B,N);
+  //imprimir(A,N);
+  //imprimir(B,N);
   multipli_mtx(A,B,C);
-  imprimir(C,N);
+  //imprimir(C,N);
 
-  for(int i=1;i<3;i++)
+  for(int i=1;i<10;i++)
     {
       printf("%d\n",Np);
-      mul_blocking(C,B,AT,Np);
-      imprimir(AT,N);
+      mul_blocking(A,B,Pr,Np);
+      // imprimir(Pr,N);
+
+      for(int i=0;i<N;i++)
+	for(int j=0;j<N;j++)
+	   Pr[i*N+j]=0.0;
+      
       Np/=2;
     }
 
@@ -45,7 +51,7 @@ int main()
   delete [] A;
   delete [] B;
   delete [] C;
-  delete [] AT;
+  delete [] Pr;
   
   return 0;
 }
@@ -107,61 +113,20 @@ double multipli_mtx(double *M1,double *M2, double *P)
 
 void mul_blocking(double *M1,double *M2, double *P,int np)
 {
-  int n=N/np;
-  n=1;
-  // if(N==np){n=0;}
-  // else{n=N/np;}
-  double *MI1= new double [np*np], *MI2=new double[np*np]; //Matrices internas que voy a mandar a multiplicar
-  
-  // double sum=0.0;
-  
-  for(int k=0;k<n;k++)
-    {
-      for(int l=0;l<n;l++)
-	{
-	  for(int m=0;m<n;m++)
+  //  int n=N/np;
+  // imprimir(M1,N);
+  //imprimir(P,N);
+ 
+  for(int m=0; m<N ; m+=np)
+    for(int l=0; l<N ;l+=np)
+      for(int k=0; k<N ; ++k)
+	for(int j=l; j<std::min(l+np,N) ;j++)
+	  for(int i=m; i<std::min(m+np,N) ;i++)
 	    {
-        for(int i=0;i<np;i++)
-	  {
-	    for(int j=0;j<np;j++)
-	      {
-		//MI1[i*np+j]=M1[N*(np*k+i)+np*l+j];
-		//MI2[j*np+i]=M2[N*(np*l+j)+np*k+i];
-		MI1[i*np+j]=M1[N*(np*k+i)+np*l+j];
-		MI2[j*np+i]=M2[N*(np*l+j)+np*k+i];
-	      }
-	  }
-	//	printf("matrices a multiplicar %d %d\n",k,l);
-	//imprimir(MI1,np);	
-	//imprimir(MI2,np);
+	      P[N*k+j]+=M1[N*k+i]*M2[N*i+j];
 	    }
-	}
-    }
-
-    delete [] MI1;
-    delete [] MI2;
+	  
+    
 }
 
 ///%%%%%%%%%%%%%%%%%%%%%%%%5
-//Funcion que multiplica las matrices que se le introduzcan desde blocking
-
-void multi_mtx(double *M1,double *M2, double *P)
-{
-  double sum=0.0;
-
-  
-  for(int i=0;i<N;i++)
-    {
-        for(int j=0;j<N;j++)
-	  {
-	    for(int k=0;k<N;k++)
-	      {
-		sum+=M1[i*N+k]*M2[k*N+j];
-	      }
-	    P[i*N+j]=sum;
-	    sum=0.0;
-	  }
-    }
-
-  
-}
