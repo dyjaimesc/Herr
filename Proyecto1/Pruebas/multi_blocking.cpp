@@ -14,7 +14,7 @@ int main()
 {
   
   double *A= new double [N*N], *B=new double[N*N],*C=new double[N*N], *Pr=new double[N*N];
-  int Np=N;
+  int Np=N/256;
 
   //inicializo la matriz
 
@@ -42,9 +42,9 @@ int main()
       int retval;
 
       //Empeizo mi buclq eue cambia los valores del bloque
-
+      /*
   for(int i=1;i<12;i++)
-    {
+  {*/
       printf("%d\n",Np);
 
   if((retval=PAPI_flops(&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
@@ -69,12 +69,12 @@ int main()
   	 real_time, proc_time,flpops,mflops);
 
       //Reinicio matriz producto
-      for(int i=0;i<N;i++)
+      /*      for(int i=0;i<N;i++)
 	for(int j=0;j<N;j++)
 	   Pr[i*N+j]=0.0;
       
       Np/=2;
-    }
+      }*/
 
   
   delete [] A;

@@ -12,12 +12,12 @@ int blocking_multiplication(const double * F, const double * FT, double * P,int)
 //int imprimir(const double * D);
 
 
-    int main(int argc, char **argv)
+int main(int argc, char **argv)
     {
       // Matrix declaration : Modeled as 1D array
       // Declare as pointers and ask for memory to use the heap
       double *A = new double [N*N], *B = new double [N*N], *C = new double [N*N];
-      int Np=N;
+      int Np=N/1024;
       // initialize matrices
       for (int ii =0; ii < N; ++ii) {
         for (int jj =0; jj < N; ++jj) {
@@ -84,8 +84,8 @@ int blocking_multiplication(const double * F, const double * FT, double * P,int)
       	std::printf(" \n " );
 
       */	
-for(int i=1;i<12;i++)
-    {
+      //for(int i=1;i<12;i++)
+      //{
       printf("%d\n",Np);
 
   if((retval=PAPI_flops(&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
@@ -111,12 +111,13 @@ for(int i=1;i<12;i++)
   	 real_time, proc_time,flpops,mflops);
 
       //Reinicio matriz producto
-      for(int i=0;i<N;i++)
+
+      /*   for(int i=0;i<N;i++)
 	for(int j=0;j<N;j++)
 	   C[i*N+j]=0.0;
       
       Np/=2;
-    }
+      }*/
  
 
       delete [] A;

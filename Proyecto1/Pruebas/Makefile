@@ -1,7 +1,7 @@
 ALL:	compilar ejecutar
 
 
-compilar: blocking_multiplicacion_directa.cpp
+compilar: multi_blocking.cpp
 	g++ -std=c++11 -Wall -o0 -g    $< -lpapi
 
 ejecutar: 0
