@@ -1,13 +1,11 @@
-ALL:	compilar out.txt
+ALL: compilar out.dat
 
 
-compilar: blocking_multiplicacion_directa.cpp
+compilar: multiplicacion_blocking.cpp
 	g++ -std=c++11 -Wall -o0 -g    $< -lpapi
 
-out.txt: 0
+out.dat: 0
 	./$< > $@
-
-
 
 .PHONY: clean
 clean:

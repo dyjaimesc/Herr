@@ -4,7 +4,7 @@
 #include <cstring>
 #include "papi.h"
 
-const int N =1024;//matrix size/2048
+const int N =512;//matrix size/2048
 
 int blocking_multiplication(const double * F, const double * FT, double * P,int);
 int lectura();
@@ -120,7 +120,7 @@ int lectura(){
   
   std::ifstream archivo;
   std::string texto;
-  archivo.open("entrada.txt",std::ios::in);
+  archivo.open("entrada.dat",std::ios::in);
   if(archivo.fail()){
     printf("No se pudo abrir el archivo");
   }
@@ -137,6 +137,8 @@ int lectura(){
   }
  
   //std::cout << x<<std::endl;
+
+  archivo.close();
   return x;
 }
 
