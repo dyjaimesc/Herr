@@ -11,4 +11,4 @@ out.txt: 0
 
 .PHONY: clean
 clean:
-	rm -f *.x  *~ a.out *#  *.pdf 0
+	rm -f *.x  *~ a.out *#  *.pdf 0 *.gp

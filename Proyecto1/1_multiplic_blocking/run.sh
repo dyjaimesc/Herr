@@ -3,7 +3,7 @@ let N=1
 touch entrada.txt
 touch salida.txt
 sed "3d" entrada.txt > salida.txt
-for i in {4..7}
+for i in {1..11}
 do
     echo $((N))>>entrada.txt
     make
@@ -17,16 +17,20 @@ cat <<EOF> plot1.gp
 
 set term pdf
 set output "mult-MFLOPS_VS_NB-o0.pdf"
-set xlabel "NB-o0"
+set xlabel "N_b"
 set ylabel "MFLOPS"
-plot [][] "salida.txt" u 1:4 w lp ps 0.5
+set grid
+#set logscale x 2
+plot [][] "salida.txt" u 1:5 w lp ps 0.5 lt rgb "red" pointtype 7
 
 
 set term pdf
 set output "mult-tiempo_VS_NB-o0.pdf"
-set xlabel "NB-o0"
+set xlabel "N_b"
 set ylabel "tiempo(s)"
-plot [][] "salida.txt" u 1:2 w lp ps 0.5
+set grid
+#set logscale x 2
+plot [][] "salida.txt" u 1:2 w lp ps 0.5 lt rgb "red" pointtype 7
 
 EOF
 gnuplot plot1.gp
