@@ -61,28 +61,26 @@ int main(int argc, char **argv)
       exit(1);
     }
 
-
   //printf("Real_time: %f Proc_time: %f Total flpops: %lld MFLOPS: %f\n",real_time, proc_time,flpops,mflops);
-
+ 
   printf("%5d %f  %f  %lld  %f\n",lectura(),real_time, proc_time,flpops,mflops);
 
-      //Reinicio matriz producto
+// Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
+  
+  double suma=0; 
 
-      /*   for(int i=0;i<N;i++)
-	for(int j=0;j<N;j++)
-	   C[i*N+j]=0.0;
-      
-      Np/=2;
-      }*/
- 
-
-      delete [] A;
-      delete [] B;
-      delete [] C;
-      
-
-      return 0;
+  for(int i=0;i<N;i++){
+    for(int j=0;j<N;j++){
+      suma+=C[i*N+j];
     }
+  }
+
+  delete [] A;
+  delete [] B;
+  delete [] C;
+      
+  return 0;
+}
 
 
     
