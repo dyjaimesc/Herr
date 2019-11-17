@@ -4,7 +4,7 @@
 #include <cstring>
 #include "papi.h"
 
-const int N =512;//matrix size/2048
+const int N =2048;//matrix size/2048
 
 int blocking_multiplication(const double * F, const double * FT, double * P,int);
 int lectura();

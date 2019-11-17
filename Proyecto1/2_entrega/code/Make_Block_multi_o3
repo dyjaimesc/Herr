@@ -1,10 +1,10 @@
-ALL: compilar out.dat
+ALL: compilar out3.dat
 
 
 compilar: multiplicacion_blocking.cpp
 	g++ -std=c++11 -Wall -o3 -g    $< -lpapi
 
-out.dat: 3
+out3.dat: 3
 	./$< > $@
 
 .PHONY: clean

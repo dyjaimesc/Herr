@@ -1,10 +1,10 @@
-ALL: compilar transpuesta_blocking.dat
+ALL: compilar transpuesta_blocking3.dat
 
 
 compilar: transpuesta_blocking.cpp
 	g++ -std=c++11 -Wall -o3 -g    $< -lpapi
 
-transpuesta_blocking.dat: 3
+transpuesta_blocking3.dat: 3
 	./$< > $@
 
 .PHONY: clean
