@@ -5,7 +5,7 @@ all: cache_lines.x ejecutar
 
 
 ejecutar:
-	valgrind --track-origins=yes --leak-check=full cache_lines.x
+	valgrind --track-origins=yes --leak-check=full ./cache_lines.x
 
 profiling:
 	gprof cache_lines.x gmon.out>analisis.txt
