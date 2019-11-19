@@ -1,0 +1,12 @@
+ALL: compilar out.dat
+
+
+compilar: transpuesta_eigen.cpp
+	g++ -std=c++11 -I /home/live/Downloads/eigen-eigen-323c052e1731 -o0 -g  $< -lpapi
+
+out.dat: 0
+	./$< > $@
+
+.PHONY: clean
+clean:
+	rm -f *.x  *~ a.out *#  *.pdf 0 *.gp *.dat

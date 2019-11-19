@@ -1,0 +1,12 @@
+ALL: compilar transpuesta_blocking.dat
+
+
+compilar: transpuesta_blocking.cpp
+	g++ -std=c++11 -o0 -g    $< -lpapi
+
+transpuesta_blocking.dat: 0
+	./$< > $@
+
+.PHONY: clean
+clean:
+	rm -f *.x  *~ a.out *#  *.pdf 0 *.gp *.dat
