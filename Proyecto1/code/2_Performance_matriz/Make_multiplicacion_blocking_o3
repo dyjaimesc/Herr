@@ -1,0 +1,12 @@
+ALL: compilar out.dat
+
+
+compilar: multiplicacion_blocking.cpp
+	g++ -std=c++11 -o3 -g    $< -lpapi
+
+out.dat: 3
+	./$< > $@
+
+.PHONY: clean
+clean:
+	rm -f *.x  *~ a.out *#  *.pdf 0 *.gp *.dat 3
