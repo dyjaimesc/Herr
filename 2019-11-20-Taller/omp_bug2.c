@@ -15,7 +15,7 @@ int nthreads, i, tid;
 float total;
 
 /*** Spawn parallel region ***/
-#pragma omp parallel private(i,tid) 
+#pragma omp parallel private(tid) 
   {
   /* Obtain thread number */
   tid = omp_get_thread_num();
@@ -30,11 +30,12 @@ float total;
 
   /* do some work */
   total = 0.0;
-  #pragma omp for schedule(dynamic,10)
+  #pragma omp parallel for schedule(dynamic,10)
   for (i=0; i<1000000; i++) 
      total = total + i*1.0;
 
   printf ("Thread %d is done! Total= %e\n",tid,total);
 
   } /*** End of parallel region ***/
+  //   printf ("Thread %d is done! Total= %e\n",tid,total);
 }
