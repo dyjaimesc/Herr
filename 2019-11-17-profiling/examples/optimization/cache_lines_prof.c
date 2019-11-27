@@ -8,7 +8,7 @@
 #include <time.h>
 
 // Global consants
-#define n 512
+#define n 256
 
 // Function prototyping
 void rowfill(float ***);
