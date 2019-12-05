@@ -6,9 +6,10 @@
  
 int main()
 {
-  int N=40;//Repeticiones
+  int N=500;//Repeticiones
   
-   int Steps=50;
+   int Steps=100;
+   
    double x=0.0;
 
   int *X= new int[N+1];
@@ -31,21 +32,20 @@ int main()
    
 for (int n = 1; n <=Steps; ++n) {
   printf("%5d",n);
-	 
-  for(int i=1;i<=N;++i)
+
+   for(int i=1;i<=N;++i)
    {
       if(dis(gen)>0.5){
 	X[i]+=1;
 	      }
       else{
 	X[i]-=1;
-		
       }
       
-      printf("%3d",X[i]);
+      printf(" %5d ",X[i]);
 	
       //std::cout << dis(gen) << ' ';
-      Avg[n]+=X[i];
+      Avg[n]+=X[i]*X[i];
    }
   x=Avg[n]*1.0/N;
 
