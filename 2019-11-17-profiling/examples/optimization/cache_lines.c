@@ -10,7 +10,7 @@ int main(){
   const int n = 512;
   clock_t cputime1, cputime2;
   float ***a;
-  int i,j,k;
+    int i,j,k;
 
   // Allocating memory for array/matrix
   a = malloc(n*sizeof(float **));

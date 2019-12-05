@@ -1,7 +1,7 @@
 all: cache_lines.x ejecutar
 
 %.x: cache_lines.c
-	gcc -g -O3 -Wall  $< -o $@ 
+	gcc -g -O1 -Wall  $< -o $@ 
 
 
 ejecutar:
