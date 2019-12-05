@@ -6,8 +6,7 @@ all: omp_bug2.x  ejecutar
 ejecutar:
 	./omp_bug2.x
 
-profiling:
-	gprof cache_lines.x gmon.out>analisis.txt
+
 
 
 .PHONY: clean

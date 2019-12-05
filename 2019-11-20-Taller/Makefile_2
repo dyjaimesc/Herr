@@ -1,0 +1,12 @@
+all: omp_mm-NEW.x  ejecutar
+
+%.x: omp_mm-NEW.cpp
+	g++ -Wall -g  $< -o $@ -fopenmp
+
+ejecutar:
+	OMP_NUM_THREADS=4 time ./omp_mm-NEW.x 
+
+
+.PHONY: clean
+clean:
+	rm -f *.x  *~ a.out *#  *.pdf 0 *.gp *.dat 3 gmon.out callgrind.out.*
