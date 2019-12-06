@@ -6,18 +6,21 @@
  
 int main()
 {
-  int N=500;//Repeticiones
+  int N=800;//Repeticiones
   
    int Steps=100;
    
    double x=0.0;
+   double random=0.0;
 
   int *X= new int[N+1];
+  int *Y= new int[N+1];
   int *Avg= new int[Steps+1]; //Valor promedio de la posicion
   
    for(int i=0;i<=N;++i)
      {
        X[i]=0;
+       Y[i]=0;
      }
 
    for(int i=0;i<=Steps;++i)
@@ -35,17 +38,24 @@ for (int n = 1; n <=Steps; ++n) {
 
    for(int i=1;i<=N;++i)
    {
-      if(dis(gen)>0.5){
+     random=dis(gen);
+      if(random<0.25){
 	X[i]+=1;
-	      }
-      else{
+      }
+      else if(random<0.5 && random>=0.25){
+	Y[i]+=1;
+      }
+      else if(random<0.75 && random>=0.5){
 	X[i]-=1;
       }
+      else{
+	Y[i]-=1;
+      }
       
-      printf(" %5d ",X[i]);
+      printf(" %5d %5d ",X[i],Y[i]);
 	
       //std::cout << dis(gen) << ' ';
-      Avg[n]+=X[i]*X[i];
+      Avg[n]+=X[i]*X[i]+Y[i]*Y[i];
    }
   x=Avg[n]*1.0/N;
 
@@ -56,6 +66,7 @@ for (int n = 1; n <=Steps; ++n) {
 // std::cout << '\n';
 
      delete [] X;
+     delete [] Y;
      delete [] Avg;
 }
 
