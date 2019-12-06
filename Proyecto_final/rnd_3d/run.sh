@@ -39,10 +39,8 @@ set grid
 #set mytics 2
 #set logscale x 2
 set key right bottom box
-plot [][] "$name.txt" u 1:1502 w lp ps $VAR lt rgb "red" pointtype 7
+plot [][] "$name.txt" u 1:3002 w lp ps $VAR lt rgb "red" pointtype 7
 replot x w lp ps $VAR lt rgb "blue" pointtype 7
-
-
 
 
 EOF

@@ -6,9 +6,9 @@
  
 int main()
 {
-  int N=500;//Repeticiones
+  int N=1000;//Repeticiones
   
-   int Steps=100;
+   int Steps=10000;
    int x1=0,y1=0,z1=0;
    
    double x=0.0;
