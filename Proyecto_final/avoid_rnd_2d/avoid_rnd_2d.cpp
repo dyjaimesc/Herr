@@ -6,14 +6,15 @@
  
 int main()
 {
-  int N=500;//Repeticiones
+  int N=5;//Repeticiones
   
-  int Steps=1000;
+  int Steps=10;
   int dim=2;//Dimension del programa
   int contador=0;//Cuenta los pasos que se van realizando
-  double x=0.0;
+  int max_vec=dim*2; //Cantidad maxima de vecinos que puede tener cada punto
   double random=0.0;
 
+  int part[max_vec];//sectores que se divide la unidad
   int Position[N*Steps*2];//Guarda la posicion de los puntos utilizados
   //int XY[Steps*dim+1];
   int x1=0,x2=0;//Variables temporales
@@ -27,6 +28,9 @@ int main()
   // for(int i=0;i<=Steps;++i)
   //   for(int j=0;j<dim;++j)
   //     XY[i][j]=0;
+
+  for(int i=1;i<=max_vec;++i)
+    part[i-1]=i*1.0;
   
    for(int i=0;i<Steps*N;++i)
      {
@@ -37,8 +41,10 @@ int main()
      Avg[i]=0;
      
    
-    std::random_device rd;  //Will be used to obtain a seed for the random number engine
-    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+   //std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    int seed=1;
+    std::mt19937 gen(seed);
+    // std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(0.0,  1.0);
 
  for(int i=0;i<N;++i)
@@ -47,16 +53,16 @@ int main()
      for(int j=0;j<Steps-1;++j){
        
        random=dis(gen);
-       if(random<0.25){
+       if(random<part[0]*1.0/max_vec){//el 0.5/dim se debe a que la cantidad de vecinos que tiene cada punto cuando maximo es dos veces la dimension 1/(2*dim)
 	 x1+=1;
        }
-       else if(random<0.5 ){
+       else if(random<part[1]*1.0/max_vec ){
 	 x2+=1;
        }
-       else if(random<0.75){
+       else if(random<part[2]*1.0/max_vec){
 	 x1-=1;
        }
-       else{
+       else if(random<part[3]*1.0/max_vec){
 	 x2-=1;
        }
        //XY[j+1][0]=X[i]+XY[j][0];
