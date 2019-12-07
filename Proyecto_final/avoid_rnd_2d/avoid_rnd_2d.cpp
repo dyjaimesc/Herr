@@ -41,15 +41,16 @@ int main()
      Avg[i]=0;
      
    
-   // std::random_device rd;  //Will be used to obtain a seed for the random number engine
-     int seed=8;
-      std::mt19937 gen(seed);
-      //   std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    //  int seed=8;
+    //   std::mt19937 gen(seed);
+         std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(0.0,  1.0);
 
  for(int i=0;i<N;++i)
    {
      // printf("%5d",n);
+     
      
      for(int j=0;j<Steps-1;++j){
 
@@ -106,10 +107,10 @@ int main()
 	 x1+=1;
        }
        else if(random<part[1]*1.0/max_vec ){
-	 x2+=1;
+	 x1-=1;
        }
        else if(random<part[2]*1.0/max_vec){
-	 x1-=1;
+	 x2+=1;
        }
        else if(random<part[3]*1.0/max_vec){
 	 x2-=1;
