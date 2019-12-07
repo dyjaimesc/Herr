@@ -6,7 +6,7 @@
  
 int main()
 {
-  int N=5;//Repeticiones
+  int N=1;//Repeticiones
   
   int Steps=10;
   int dim=2;//Dimension del programa
@@ -15,7 +15,7 @@ int main()
   double random=0.0;
 
   int part[max_vec];//sectores que se divide la unidad
-  int Position[N*Steps*2];//Guarda la posicion de los puntos utilizados
+  //  int Position[N*Steps*2];//Guarda la posicion de los puntos utilizados
   //int XY[Steps*dim+1];
   int x1=0,x2=0;//Variables temporales
   int X1[Steps*N];
@@ -41,18 +41,67 @@ int main()
      Avg[i]=0;
      
    
-   //std::random_device rd;  //Will be used to obtain a seed for the random number engine
-    int seed=1;
-    std::mt19937 gen(seed);
-    // std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+   // std::random_device rd;  //Will be used to obtain a seed for the random number engine
+     int seed=8;
+      std::mt19937 gen(seed);
+      //   std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(0.0,  1.0);
 
  for(int i=0;i<N;++i)
    {
      // printf("%5d",n);
+     
      for(int j=0;j<Steps-1;++j){
+
+        for(int i=1;i<=max_vec;++i)
+	  part[i-1]=i*1.0;
        
        random=dis(gen);
+       
+       ////////////////////////////////////////////
+       for(int k=0;k<j;k++)
+	 {
+	   if(X2[j]==X2[k])//Reviso si la posicion j-esima de X2 ya esta ocupada en otra posicion k-esima
+	     {
+	       if(X1[j]+1==X1[k] && X2[j]==X2[k]) //Reviso si la posicion siguiente a X1 de j corresponde a la poscion k-esima de X1 (con esto comparo las parejas (X1[j]+1,X2[j]) y la posicion ya ocupada (X1[k],X2[k]) )
+		 {
+		   part[0]=0.0;
+		   max_vec--;
+		 }
+	        if(X1[j]-1==X1[k] && X2[j]==X2[k])
+		 {
+		   part[1]=0.0;
+		   max_vec--;
+		 }
+	     }
+
+	   if(X1[j]==X1[k])
+	     {
+	       if(X2[j]+1==X2[k] && X1[j]==X1[k])
+		 {
+		   part[2]=0.0;
+		   max_vec--;
+		 }
+	       if(X2[j]-1==X2[k] && X1[j]==X1[k])
+		 {
+		   part[3]=0.0;
+		   max_vec--;
+		 }
+	     }
+	 }
+
+       if(max_vec<1){exit(-1);}//no hay mas espacios hacia donde moverse por lo tanto debo terminar el programa
+       double kk=0;
+       for(int k=0;k<dim*2;k++)
+	 {
+	   if(part[k]>0.0){
+	     kk+=1; part[k]=kk;
+	   }
+	 }
+
+       /////////////////////////////////////////////////////////
+
+       
        if(random<part[0]*1.0/max_vec){//el 0.5/dim se debe a que la cantidad de vecinos que tiene cada punto cuando maximo es dos veces la dimension 1/(2*dim)
 	 x1+=1;
        }
@@ -71,6 +120,7 @@ int main()
        X2[j+1+i*Steps]=x2+X2[j+i*Steps];
        x1=0;
        x2=0;
+       max_vec=dim*2;
      }
    }
 
