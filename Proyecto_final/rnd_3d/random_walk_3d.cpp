@@ -1,4 +1,4 @@
-//Programa que realiza el camino aleatorio en 2d
+//Programa que realiza el camino aleatorio en 3d
 
 #include <random>
 #include <algorithm>
@@ -9,7 +9,7 @@
  
 int main()
 {
-  //creo variables que me dan la cantidad de caminos que realzo (N) y la cantidad de pasos por camino (Steps)
+  //Se crean variables que  dan la cantidad de caminos que se realzan (N) y la cantidad de pasos por camino (Steps)
   int N=10000;//Repeticiones
   int Steps=500;
 
