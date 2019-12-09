@@ -22,11 +22,11 @@ set grid
 #set mxtics 2
 #set mytics 2
 #set logscale x 2
-set key left top box
+#set key left top box
 #unset key
-plot [-10:10][-10:10] "$name.txt" u 1:2 title "$Name_walk 1" w lp ps $VAR lt rgb "red" pointtype 7, \
-     	  "$name.txt" u 3:4  title "$Name_walk 2" w lp ps $VAR lt rgb "blue" pointtype 7, \
-	  "$name.txt" u 5:6  title "$Name_walk 3" w lp ps $VAR lt rgb "green" pointtype 7
+splot [][] "$name.txt" u 1:2:3 title "$Name_walk 1" w lp ps $VAR lt rgb "red" pointtype 7, \
+     	  "$name.txt" u 4:5:6  title "$Name_walk 2" w lp ps $VAR lt rgb "blue" pointtype 7, \
+	  "$name.txt" u 7:8:9  title "$Name_walk 3" w lp ps $VAR lt rgb "green" pointtype 7
 
 set term pdf
 set output "Mean_Rand_walk_vs_steps.pdf"
@@ -39,10 +39,8 @@ set grid
 #set mytics 2
 #set logscale x 2
 set key right bottom box
-plot [][] "$name.txt" u 12:11 w lp ps $VAR lt rgb "red" pointtype 7
+plot [][] "$name.txt" u 1502:1501 w lp ps $VAR lt rgb "red" pointtype 7
 replot x w lp ps $VAR lt rgb "blue" pointtype 7
-
-
 
 
 EOF
