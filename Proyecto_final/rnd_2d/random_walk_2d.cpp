@@ -10,29 +10,32 @@
 int main()
 {
   //creo variables que me dan la cantidad de caminos que realzo (N) y la cantidad de pasos por camino (Steps)
-  int N=500;//Repeticiones
-  int Steps=100;
+  int N=5000;//Repeticiones
+  int Steps=1000;
 
   int pasos=Steps;//Variable utilizada para  parar el programa si el camino aleatorio se encuentra con un punto sin salida posible.
   int dim=2;//Dimension del programa
   int contador=0;//Cuenta los pasos que se van realizando
   int max_vec=dim*2; //Cantidad maxima de vecinos que puede tener cada punto
   double random=0.0;
-
-  int part[max_vec];//sectores que se divide la unidad
-  //  int Position[N*Steps*2];//Guarda la posicion de los puntos utilizados
-  //int XY[Steps*dim+1];
   int x1=0,x2=0;//Variables temporales donde guardo los cambios de las respectivas coordenads
-  int X1[Steps*N];
-  int X2[Steps*N];
-  int Avg[Steps]; //Valor promedio de la posicion
+
+  // int part[max_vec];//sectores que se divide la unidad
+  // int X1[Steps*N];
+  // int X2[Steps*N];
+  //int Avg[Steps]; //Valor promedio de la posicion
+
+  int *part= new int[max_vec];//sectores que se divide la unidad
+  int *X1= new int[Steps*N];
+  int *X2= new int[Steps*N];
+  int *Avg= new int[Steps]; //Valor promedio de la posicion
+  
    
   // int *X= new int[N+1];
   // int *Y= new int[N+1];
   // int *Avg= new int[Steps+1]; //Valor promedio de la posicion
   // for(int i=0;i<=Steps;++i)
-  //   for(int j=0;j<dim;++j)
-  //     XY[i][j]=0;
+ 
 
   ///////////////////////////////////////////////////////////////////////////////////////
   //Inicializo los arreglos que se van a utilizar
@@ -103,7 +106,13 @@ int main()
      // delete [] X;
      // delete [] Y;
      // delete [] Avg;
+
+   delete [] part;//sectores que se divide la unidad
+   delete [] X1;
+   delete [] X2;
+   delete [] Avg; //Valor promedio de la posicion
  // printf(" %d ",pasos);
+   
  return 0;
 }
 
